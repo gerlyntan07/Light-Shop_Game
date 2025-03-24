@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2evpsjqyhkif"]
+[gd_scene load_steps=9 format=3 uid="uid://c2evpsjqyhkif"]
 
 [ext_resource type="Texture2D" uid="uid://d1d23smrdktn2" path="res://light shop assets/idle-eyes-opened.png" id="1_4h3ss"]
+[ext_resource type="Script" path="res://player.gd" id="1_m1bqu"]
 [ext_resource type="Texture2D" uid="uid://b3dcudte8blng" path="res://light shop assets/idle-eyes-closed.png" id="3_65xuh"]
 [ext_resource type="Texture2D" uid="uid://ga5o8nc1x6qf" path="res://light shop assets/walk1.png" id="3_jp0db"]
 [ext_resource type="Texture2D" uid="uid://bc33qvd2jaln1" path="res://light shop assets/walk2.png" id="4_0fefl"]
@@ -34,8 +35,12 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Area2D" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_403ri"]
+size = Vector2(174, 279)
+
+[node name="Player" type="Area2D"]
 position = Vector2(598, 452)
+script = ExtResource("1_m1bqu")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -43,3 +48,7 @@ scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_ss6jg")
 animation = &"idle"
 frame_progress = 0.896705
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_403ri")
