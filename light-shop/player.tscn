@@ -28,10 +28,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_jr7ob")
 }, {
-"duration": 1.0,
-"texture": ExtResource("5_xhayl")
-}, {
-"duration": 1.0,
+"duration": 2.1,
 "texture": ExtResource("6_38xa6")
 }, {
 "duration": 1.0,
@@ -42,7 +39,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump",
-"speed": 6.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -60,7 +57,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_403ri"]
-size = Vector2(174, 279)
+size = Vector2(933.334, 1766.67)
 
 [node name="Player" type="Area2D"]
 position = Vector2(598, 497)
@@ -68,11 +65,12 @@ script = ExtResource("1_m1bqu")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.15, 0.15)
+scale = Vector2(0.09, 0.09)
 sprite_frames = SubResource("SpriteFrames_ss6jg")
 animation = &"jump"
-frame_progress = 0.783749
+frame_progress = 0.153338
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0.5)
+position = Vector2(6, 4.49997)
+scale = Vector2(0.09, 0.09)
 shape = SubResource("RectangleShape2D_403ri")
