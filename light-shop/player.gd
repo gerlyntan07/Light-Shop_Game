@@ -51,7 +51,7 @@ func _process(delta):
 		# Jump animation should have the highest priority
 		if $AnimatedSprite2D.animation != "jump":
 			$AnimatedSprite2D.play("jump")
-			$AnimatedSprite2D.flip_h = velocity.x < 0
+		$AnimatedSprite2D.flip_h = velocity.x < 0
 	elif velocity.x != 0:
 		# Only play walk if not jumping
 		if $AnimatedSprite2D.animation != "walk":
