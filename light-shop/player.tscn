@@ -1,18 +1,48 @@
-[gd_scene load_steps=13 format=3 uid="uid://c2evpsjqyhkif"]
+[gd_scene load_steps=18 format=3 uid="uid://c2evpsjqyhkif"]
 
 [ext_resource type="Texture2D" uid="uid://d1d23smrdktn2" path="res://light shop assets/idle-eyes-opened.png" id="1_4h3ss"]
 [ext_resource type="Script" path="res://player.gd" id="1_m1bqu"]
+[ext_resource type="Texture2D" uid="uid://dvqdatwcjfk6y" path="res://light shop assets/crouch.png" id="2_virxu"]
 [ext_resource type="Texture2D" uid="uid://b3dcudte8blng" path="res://light shop assets/idle-eyes-closed.png" id="3_65xuh"]
 [ext_resource type="Texture2D" uid="uid://d2crxnnf5k4dc" path="res://light shop assets/walk1.png" id="3_jp0db"]
+[ext_resource type="Texture2D" uid="uid://chxtrbge8d1t" path="res://light shop assets/crouch2.png" id="3_u1kbd"]
 [ext_resource type="Texture2D" uid="uid://c71xfucavll2v" path="res://light shop assets/walk2.png" id="4_0fefl"]
+[ext_resource type="Texture2D" uid="uid://c0d2pwblou5r6" path="res://light shop assets/crouch-walk1.png" id="4_7cl4g"]
 [ext_resource type="Texture2D" uid="uid://bongvbhlfnfjc" path="res://light shop assets/jump1.png" id="4_jr7ob"]
 [ext_resource type="Texture2D" uid="uid://0qh7o2gmljur" path="res://light shop assets/walk3.png" id="5_1phur"]
+[ext_resource type="Texture2D" uid="uid://kp74i2g5g0so" path="res://light shop assets/crouch-walk2.png" id="5_hrbsv"]
 [ext_resource type="Texture2D" uid="uid://ckh8cnqwwj6v8" path="res://light shop assets/jump2.png" id="5_xhayl"]
 [ext_resource type="Texture2D" uid="uid://py01eqvb1kj0" path="res://light shop assets/jump3.png" id="6_38xa6"]
+[ext_resource type="Texture2D" uid="uid://btm0eqinvqyam" path="res://light shop assets/crouch-walk3.png" id="6_dmtj2"]
 [ext_resource type="Texture2D" uid="uid://2hjok0srhpnx" path="res://light shop assets/jump4.png" id="7_pqasv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ss6jg"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_virxu")
+}, {
+"duration": 0.8,
+"texture": ExtResource("3_u1kbd")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7cl4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hrbsv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dmtj2")
+}],
+"loop": true,
+"name": &"crouch_walk",
+"speed": 6.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_4h3ss")
@@ -53,7 +83,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 6.0
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_403ri"]
@@ -67,8 +97,8 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.09, 0.09)
 sprite_frames = SubResource("SpriteFrames_ss6jg")
-animation = &"jump"
-frame_progress = 0.153338
+animation = &"idle"
+frame_progress = 0.809618
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6, 4.49997)
