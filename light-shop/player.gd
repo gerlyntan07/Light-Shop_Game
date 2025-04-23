@@ -3,7 +3,7 @@ extends Area2D
 @export var SPEED = 400
 @export var JUMP_FORCE = 500
 @export var GRAVITY = 1200
-@export var MARGIN = 150  # Added margin for screen boundaries
+@export var MARGIN = 150 
 @export var CROUCH_SPEED_MULTIPLIER = 0.4  # Reduce speed while crouching
 
 var velocity = Vector2.ZERO
