@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://up0ef8fwpjlh"]
+
+[ext_resource type="Texture2D" uid="uid://10lnftcsfcha" path="res://light shop assets/metal-spike.png" id="1_1wmgv"]
+[ext_resource type="Script" path="res://spike.gd" id="1_2uj7i"]
+[ext_resource type="AudioStream" uid="uid://bl0ohd6mafb6x" path="res://light shop assets/audio/flatline-beep.mp3" id="3_plnhr"]
+
+[node name="Spike" type="Area2D"]
+position = Vector2(520, 560)
+collision_layer = 2
+script = ExtResource("1_2uj7i")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("1_1wmgv")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-18, 15, 0, -16, 18, 15)
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_plnhr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

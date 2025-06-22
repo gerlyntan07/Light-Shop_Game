@@ -1,78 +1,85 @@
-extends Area2D
+extends CharacterBody2D
 
 @export var SPEED = 400
 @export var JUMP_FORCE = 500
 @export var GRAVITY = 1200
 @export var MARGIN = 150 
-@export var CROUCH_SPEED_MULTIPLIER = 0.4  # Reduce speed while crouching
+@export var CROUCH_SPEED_MULTIPLIER = 0.4
 
-var velocity = Vector2.ZERO
 var screen_size
 var is_jumping = false
 var is_crouch = false
+var facing_left := false  # Track last direction
+var is_dead = false
+
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var collision_normal = $CollisionNormal
+@onready var collision_crouch = $CollisionCrouch
 
 func _ready():
 	screen_size = get_viewport_rect().size
 
-func _process(delta):
-	# Apply gravity
-	if is_jumping:
-		velocity.y += GRAVITY * delta  
+func _physics_process(delta):
+	#Dead
+	if is_dead:
+		velocity = Vector2.ZERO
+		return
+	
+	# Gravity
+	if not is_on_floor():
+		velocity.y += GRAVITY * delta
+	else:
+		is_jumping = false
 
-	# Handle movement
+	# Horizontal input
 	var input_vector = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
 		input_vector.x += 1
 	if Input.is_action_pressed("move_left"):
 		input_vector.x -= 1
 
-	# Apply crouch
+	# Crouch state
 	is_crouch = Input.is_action_pressed("crouch")
+	collision_normal.disabled = is_crouch
+	collision_crouch.disabled = not is_crouch
 
-	# Adjust speed if crouching
+	# Movement speed
 	var actual_speed = SPEED
 	if is_crouch:
 		actual_speed *= CROUCH_SPEED_MULTIPLIER
 
-	# Normalize movement
 	if input_vector.length() > 0:
 		input_vector = input_vector.normalized() * actual_speed
 
-	# Apply jump
-	if Input.is_action_just_pressed("jump") and not is_jumping:
+	# Update X velocity
+	velocity.x = input_vector.x
+
+	# Track last movement direction for flipping
+	if velocity.x < 0:
+		facing_left = true
+	elif velocity.x > 0:
+		facing_left = false
+
+	# Jump
+	if Input.is_action_just_pressed("jump") and is_on_floor() and not is_crouch:
 		velocity.y = -JUMP_FORCE
 		is_jumping = true
 
-	# Update velocity
-	velocity.x = input_vector.x
-	position += velocity * delta
+	# Apply movement and update velocity
+	move_and_slide()
 
-	# Ground collision simulation
-	if position.y >= screen_size.y - MARGIN:  
-		is_jumping = false
-		position.y = screen_size.y - MARGIN
-
-	# Clamp to screen
-	position.x = clamp(position.x, MARGIN, screen_size.x - MARGIN)
-	position.y = clamp(position.y, MARGIN, screen_size.y - MARGIN)
-
-	# Handle animations
-	if is_jumping:
-		if $AnimatedSprite2D.animation != "jump":
-			$AnimatedSprite2D.play("jump")
-		$AnimatedSprite2D.flip_h = velocity.x < 0
+	# Animations
+	if not is_on_floor():
+		animated_sprite.play("jump")
 	elif is_crouch:
 		if velocity.x != 0:
-			if $AnimatedSprite2D.animation != "crouch_walk":
-				$AnimatedSprite2D.play("crouch_walk")
+			animated_sprite.play("crouch_walk")
 		else:
-			if $AnimatedSprite2D.animation != "crouch":
-				$AnimatedSprite2D.play("crouch")
-		$AnimatedSprite2D.flip_h = velocity.x < 0
+			animated_sprite.play("crouch")
 	elif velocity.x != 0:
-		if $AnimatedSprite2D.animation != "walk":
-			$AnimatedSprite2D.play("walk")
-		$AnimatedSprite2D.flip_h = velocity.x < 0
+		animated_sprite.play("walk")
 	else:
-		if $AnimatedSprite2D.animation != "idle":
-			$AnimatedSprite2D.play("idle")
+		animated_sprite.play("idle")
+
+	# Flip based on last movement
+	animated_sprite.flip_h = facing_left

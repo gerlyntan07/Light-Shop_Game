@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bl0ohd6mafb6x"
+path="res://.godot/imported/flatline-beep.mp3-55330f2eeeb4b1dda209daa0bc0d11d0.mp3str"
+
+[deps]
+
+source_file="res://light shop assets/audio/flatline-beep.mp3"
+dest_files=["res://.godot/imported/flatline-beep.mp3-55330f2eeeb4b1dda209daa0bc0d11d0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
