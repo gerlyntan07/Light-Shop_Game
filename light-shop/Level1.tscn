@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo5nq8w2a2rn0"]
+[gd_scene load_steps=10 format=3 uid="uid://bo5nq8w2a2rn0"]
 
 [ext_resource type="Script" path="res://level_1.gd" id="1_8ib3s"]
 [ext_resource type="Texture2D" uid="uid://dcy2kaspa54us" path="res://light shop assets/primary-platform.png" id="1_16okw"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://up0ef8fwpjlh" path="res://Spike.tscn" id="3_ix58m"]
 [ext_resource type="PackedScene" uid="uid://naj5cwapotk2" path="res://LightBulb.tscn" id="4_flvuw"]
 [ext_resource type="Texture2D" uid="uid://dd65p2eietouv" path="res://light shop assets/bulb-on.png" id="5_nyel3"]
+[ext_resource type="AudioStream" uid="uid://dgju2c345eptb" path="res://light shop assets/audio/level-bgm.MP3" id="7_s5npn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h61k6"]
 texture = ExtResource("1_16okw")
@@ -78,3 +79,8 @@ position = Vector2(239, 227)
 
 [node name="BlackOverlay" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
+
+[node name="LevelBGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_s5npn")
+volume_db = 11.2
+autoplay = true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d0v57m1rglp6h"
+path="res://.godot/imported/main-menu-bgm.MP3-f57cb35a4bd8eda1a48027f0ad3d3eff.mp3str"
+
+[deps]
+
+source_file="res://light shop assets/audio/main-menu-bgm.MP3"
+dest_files=["res://.godot/imported/main-menu-bgm.MP3-f57cb35a4bd8eda1a48027f0ad3d3eff.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

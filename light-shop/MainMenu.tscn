@@ -1,0 +1,164 @@
+[gd_scene load_steps=10 format=3 uid="uid://df2q6ws73ppmd"]
+
+[ext_resource type="Texture2D" uid="uid://dndgpeneb2ngj" path="res://light shop assets/main-menuBG.png" id="1_3tqnn"]
+[ext_resource type="Script" path="res://main_menu.gd" id="1_xywil"]
+[ext_resource type="FontFile" uid="uid://brblf14im6w1e" path="res://light shop assets/Burgundia_PERSONAL_USE_ONLY.otf" id="2_7fdlc"]
+[ext_resource type="AudioStream" uid="uid://37267ayecyux" path="res://light shop assets/audio/mouse-click.mp3" id="4_obkew"]
+[ext_resource type="AudioStream" uid="uid://d0v57m1rglp6h" path="res://light shop assets/audio/main-menu-bgm.MP3" id="5_fnjr8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dr3uj"]
+font = ExtResource("2_7fdlc")
+font_size = 100
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8fwam"]
+font = ExtResource("2_7fdlc")
+font_size = 13
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0c551"]
+bg_color = Color(0.162066, 0.162066, 0.162066, 1)
+
+[sub_resource type="Theme" id="Theme_y31q6"]
+default_font = ExtResource("2_7fdlc")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_xywil")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3tqnn")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -254.0
+offset_top = -137.0
+offset_right = 254.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Light Shop"
+label_settings = SubResource("LabelSettings_dr3uj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 101.0
+grow_horizontal = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start
+"
+
+[node name="HowToPlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "How to play"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="AuthorLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -81.0
+offset_top = 276.0
+offset_right = 81.0
+offset_bottom = 299.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Created by Gerlyn Tan"
+label_settings = SubResource("LabelSettings_8fwam")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HowToPlayContainer" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.5
+offset_top = -229.5
+offset_right = 336.5
+offset_bottom = 229.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0c551")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HowToPlayContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 51.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_y31q6")
+bbcode_enabled = true
+text = "[center]
+Welcome to Light Shop!
+
+🎮 Controls:
+- Move Left/Right: Arrow Keys / A-D
+- Jump: Spacebar
+- Crouch: Ctrl
+- Interact with Light: E
+
+💡 Objective:
+- Find the real glowing light to escape each level.
+- Be careful — idle too long and the Reaper will chase you!
+
+Good luck.
+[/center]"
+
+[node name="BackButton" type="Button" parent="HowToPlayContainer"]
+layout_mode = 0
+offset_left = 12.5
+offset_top = 7.5
+offset_right = 76.5
+offset_bottom = 38.5
+text = "<- Back"
+
+[node name="MouseClick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_obkew")
+volume_db = 5.245
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_fnjr8")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="HowToPlayContainer/BackButton" to="." method="_on_back_button_pressed"]

@@ -19,5 +19,6 @@ polygon = PackedVector2Array(-18, 15, 0, -16, 18, 15)
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_plnhr")
+volume_db = -8.533
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
