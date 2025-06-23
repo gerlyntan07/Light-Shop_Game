@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://pll5ipiuvjc2"
+path="res://.godot/imported/bulb-on.mp3-aa8574f7c54215a2763818e0257df1a0.mp3str"
+
+[deps]
+
+source_file="res://light shop assets/audio/bulb-on.mp3"
+dest_files=["res://.godot/imported/bulb-on.mp3-aa8574f7c54215a2763818e0257df1a0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

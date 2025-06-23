@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c4wmad8mhxm65"]
+[gd_scene load_steps=22 format=3 uid="uid://c4wmad8mhxm65"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_kgdmp"]
 [ext_resource type="Texture2D" uid="uid://chxtrbge8d1t" path="res://light shop assets/crouch2.png" id="2_c5pdg"]
@@ -96,6 +96,18 @@ size = Vector2(48, 82)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwf4w"]
 size = Vector2(48, 71)
 
+[sub_resource type="Gradient" id="Gradient_rcw2m"]
+offsets = PackedFloat32Array(0.170149, 0.695522)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dolvn"]
+gradient = SubResource("Gradient_rcw2m")
+width = 500
+height = 500
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.491453, 0.448718)
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(368, 560)
 collision_mask = 3
@@ -115,3 +127,7 @@ shape = SubResource("RectangleShape2D_e70t4")
 [node name="CollisionCrouch" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_iwf4w")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.99
+texture = SubResource("GradientTexture2D_dolvn")

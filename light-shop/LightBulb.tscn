@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://naj5cwapotk2"]
+
+[ext_resource type="Script" path="res://light_bulb.gd" id="1_1oxcd"]
+[ext_resource type="Texture2D" uid="uid://dgivypyw5nbd1" path="res://light shop assets/bulb-off.png" id="1_3vy8p"]
+[ext_resource type="AudioStream" uid="uid://sgn67ak031w3" path="res://light shop assets/audio/fake-bulb.mp3" id="3_gvw0h"]
+[ext_resource type="AudioStream" uid="uid://pll5ipiuvjc2" path="res://light shop assets/audio/bulb-on.mp3" id="4_r43x8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4yofv"]
+size = Vector2(45, 124)
+
+[node name="LightBulb" type="Area2D"]
+position = Vector2(564, 412)
+script = ExtResource("1_1oxcd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_3vy8p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 10)
+shape = SubResource("RectangleShape2D_4yofv")
+
+[node name="fakeBulb" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_gvw0h")
+
+[node name="realBulb" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_r43x8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
