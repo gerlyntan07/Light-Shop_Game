@@ -15,6 +15,8 @@ var is_dead = false
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var collision_normal = $CollisionNormal
 @onready var collision_crouch = $CollisionCrouch
+@onready var idle_timer = $"../IdleTimer"
+var previous_position := Vector2.ZERO
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -83,3 +85,13 @@ func _physics_process(delta):
 
 	# Flip based on last movement
 	animated_sprite.flip_h = facing_left
+	
+	# Detect idleness
+	if global_position == previous_position:
+		if idle_timer.is_stopped():
+			idle_timer.start()
+	else:
+		idle_timer.stop()
+		idle_timer.start()
+
+	previous_position = global_position

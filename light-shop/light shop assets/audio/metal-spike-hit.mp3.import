@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://csxkmmiw8k5dl"
+path="res://.godot/imported/metal-spike-hit.mp3-ad4bc881b018af97c60fcb0c5adaf0f7.mp3str"
+
+[deps]
+
+source_file="res://light shop assets/audio/metal-spike-hit.mp3"
+dest_files=["res://.godot/imported/metal-spike-hit.mp3-ad4bc881b018af97c60fcb0c5adaf0f7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

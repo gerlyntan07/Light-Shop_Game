@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7858ts8i6ara"]
+
+[ext_resource type="Texture2D" uid="uid://dndgpeneb2ngj" path="res://light shop assets/main-menuBG.png" id="1_3m8x5"]
+[ext_resource type="Script" path="res://ending.gd" id="1_6a1vl"]
+[ext_resource type="FontFile" uid="uid://brblf14im6w1e" path="res://light shop assets/Burgundia_PERSONAL_USE_ONLY.otf" id="2_a4kkb"]
+[ext_resource type="AudioStream" uid="uid://qdxbnd80nqmw" path="res://light shop assets/audio/Ending-BGM.mp3" id="4_6c2rb"]
+[ext_resource type="AudioStream" uid="uid://37267ayecyux" path="res://light shop assets/audio/mouse-click.mp3" id="5_vcdei"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hpoqq"]
+font = ExtResource("2_a4kkb")
+font_size = 60
+
+[node name="Ending" type="CanvasLayer"]
+script = ExtResource("1_6a1vl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_3m8x5")
+
+[node name="Label" type="Label" parent="."]
+offset_top = 296.0
+offset_right = 1152.0
+offset_bottom = 397.0
+text = "You found your light."
+label_settings = SubResource("LabelSettings_hpoqq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -59.0
+offset_top = -230.0
+offset_right = 59.0
+offset_bottom = -164.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="RestartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Play again"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="EndingBGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_6c2rb")
+volume_db = 5.0
+autoplay = true
+
+[node name="MouseClick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_vcdei")
+
+[connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

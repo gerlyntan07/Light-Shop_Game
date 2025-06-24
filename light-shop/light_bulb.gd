@@ -32,11 +32,9 @@ func _check_bulb():
 		
 		# Call the Level1 scene's method to remove darkness and spotlight
 		var level = get_tree().get_current_scene()
-		level.on_real_bulb_activated()
-		
-		# Wait before changing scene
-		await get_tree().create_timer(1.0).timeout
-		get_tree().change_scene_to_file("res://scenes/Level2.tscn")  # Update path as needed
+		if level.has_method("on_real_bulb_activated"):
+			level.on_real_bulb_activated()
+				
 	else:
 		wrong_bulb.play()
   

@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bo5nq8w2a2rn0"]
+[gd_scene load_steps=12 format=3 uid="uid://bo5nq8w2a2rn0"]
 
 [ext_resource type="Script" path="res://level_1.gd" id="1_8ib3s"]
 [ext_resource type="Texture2D" uid="uid://dcy2kaspa54us" path="res://light shop assets/primary-platform.png" id="1_16okw"]
 [ext_resource type="PackedScene" uid="uid://c4wmad8mhxm65" path="res://Player.tscn" id="2_0ju0b"]
+[ext_resource type="AudioStream" uid="uid://fd82aupenu72" path="res://light shop assets/audio/reaper-chase.MP3" id="3_3booi"]
 [ext_resource type="PackedScene" uid="uid://up0ef8fwpjlh" path="res://Spike.tscn" id="3_ix58m"]
+[ext_resource type="PackedScene" uid="uid://b3d262x01i62u" path="res://Reaper.tscn" id="3_r4h5y"]
 [ext_resource type="PackedScene" uid="uid://naj5cwapotk2" path="res://LightBulb.tscn" id="4_flvuw"]
 [ext_resource type="Texture2D" uid="uid://dd65p2eietouv" path="res://light shop assets/bulb-on.png" id="5_nyel3"]
 [ext_resource type="AudioStream" uid="uid://dgju2c345eptb" path="res://light shop assets/audio/level-bgm.MP3" id="7_s5npn"]
@@ -33,6 +35,11 @@ color = Color(0.114897, 0.114897, 0.114897, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_0ju0b")]
 position = Vector2(72, 560)
+
+[node name="ReaperChaseBGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_3booi")
+
+[node name="Reaper" parent="." instance=ExtResource("3_r4h5y")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_al6j3")
@@ -84,3 +91,9 @@ color = Color(0, 0, 0, 1)
 stream = ExtResource("7_s5npn")
 volume_db = 11.2
 autoplay = true
+
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]

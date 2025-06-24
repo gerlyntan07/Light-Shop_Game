@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://10lnftcsfcha" path="res://light shop assets/metal-spike.png" id="1_1wmgv"]
 [ext_resource type="Script" path="res://spike.gd" id="1_2uj7i"]
-[ext_resource type="AudioStream" uid="uid://bl0ohd6mafb6x" path="res://light shop assets/audio/flatline-beep.mp3" id="3_plnhr"]
+[ext_resource type="AudioStream" uid="uid://csxkmmiw8k5dl" path="res://light shop assets/audio/metal-spike-hit.mp3" id="3_4yptf"]
 
 [node name="Spike" type="Area2D"]
 position = Vector2(520, 560)
@@ -18,7 +18,7 @@ texture = ExtResource("1_1wmgv")
 polygon = PackedVector2Array(-18, 15, 0, -16, 18, 15)
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_plnhr")
-volume_db = -8.533
+stream = ExtResource("3_4yptf")
+volume_db = 5.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
