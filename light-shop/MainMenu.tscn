@@ -36,7 +36,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_xywil")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="BackgroundImage" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,7 +45,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_3tqnn")
 
-[node name="Label" type="Label" parent="."]
+[node name="GameTitle" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

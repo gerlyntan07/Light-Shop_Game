@@ -13,12 +13,12 @@ font_size = 60
 [node name="Ending" type="CanvasLayer"]
 script = ExtResource("1_6a1vl")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="BackgroundImage" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_3m8x5")
 
-[node name="Label" type="Label" parent="."]
+[node name="EndingMessage" type="Label" parent="."]
 offset_top = 296.0
 offset_right = 1152.0
 offset_bottom = 397.0
