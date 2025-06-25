@@ -2,7 +2,7 @@
 extends Area2D
 
 @export var is_real_bulb := false           # Set true for the correct bulb
-@export var bulb_texture_on: Texture2D      # Assign bulb-on.png here
+@export var bulb_texture_on: Texture2D
 
 var player_in_range := false
 @onready var sprite = $Sprite2D
@@ -29,8 +29,7 @@ func _check_bulb():
 	if is_real_bulb:				
 		bulb_on_audio.play()
 		sprite.texture = bulb_texture_on
-		
-		# Call the Level1 scene's method to remove darkness and spotlight
+				
 		var level = get_tree().get_current_scene()
 		if level.has_method("on_real_bulb_activated"):
 			level.on_real_bulb_activated()

@@ -5,7 +5,7 @@ var is_active := false
 var target: Node2D
 
 func _ready():
-	visible = false  # hidden by default
+	visible = false
 
 func _physics_process(delta):
 	if is_active and target:

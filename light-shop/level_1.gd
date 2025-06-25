@@ -12,7 +12,6 @@ func _process(delta: float) -> void:
 	pass
 
 func on_real_bulb_activated():
-	# Smoothly fade the darkness or instantly set alpha to 0
 	$BlackOverlay.visible = false
 
 	# Disable player spotlight
